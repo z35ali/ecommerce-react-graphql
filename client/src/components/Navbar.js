@@ -15,14 +15,14 @@ export default class Navbar extends Component {
         shape='roundedBottom'
       >
         {/* Sign in link */}
-        <NavLink to='/signin'>
+        <NavLink activeClassName='active' to='/signin'>
           <Text size='x1' color='white'>
             Sign In
           </Text>
         </NavLink>
 
         {/* Title and Logo */}
-        <NavLink to='/'>
+        <NavLink activeClassName='active' exact to='/'>
           <Box display='flex' alignItems='center'>
             <Box height={50} width={50} margin={2}>
               <Image
@@ -39,7 +39,7 @@ export default class Navbar extends Component {
         </NavLink>
 
         {/* Sign up link */}
-        <NavLink to='/signup'>
+        <NavLink activeClassName='active' to='/signup'>
           <Text size='x1' color='white'>
             Sign Up
           </Text>
