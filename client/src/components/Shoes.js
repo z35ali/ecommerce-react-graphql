@@ -8,12 +8,16 @@ import {
   Card,
   Image,
   Container,
-  Mask
+  Mask,
+  IconButton
 } from 'gestalt';
 import Loader from './Loader';
 import { Link } from 'react-router-dom';
+import { calculatePrice } from '../utils/index';
+
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiUrl);
+
 export default class shoes extends Component {
   constructor(props) {
     super(props);
@@ -52,6 +56,31 @@ export default class shoes extends Component {
     }
     this.setState({ loadingshoes: false });
   }
+
+  addToCart = shoe => {
+    const alreadyInCart = this.state.cartItems.findIndex(
+      item => item._id === shoe._id
+    );
+
+    if (alreadyInCart === -1) {
+      const updatedItems = this.state.cartItems.concat({
+        ...shoe,
+        quantity: 1
+      });
+      this.setState({ cartItems: updatedItems });
+    } else {
+      const updatedItems = [...this.state.cartItems];
+      updatedItems[alreadyInCart].quantity += 1;
+      this.setState({ cartItems: updatedItems });
+    }
+  };
+
+  deleteItemFromCart = itemToDeleteId => {
+    const filteredItems = this.state.cartItems.filter(
+      item => item._id !== itemToDeleteId
+    );
+    this.setState({ cartItems: filteredItems });
+  };
 
   render() {
     const { brand, shoes, loadingshoes, cartItems } = this.state;
@@ -116,7 +145,11 @@ export default class shoes extends Component {
                       </Box>
                       <Box marginTop={4}>
                         <Text size='xl'>
-                          <Button color='blue' text='Add to Cart' />
+                          <Button
+                            onClick={() => this.addToCart(shoe)}
+                            color='blue'
+                            text='Add to Cart'
+                          />
                         </Text>
                       </Box>
                     </Box>
@@ -135,7 +168,7 @@ export default class shoes extends Component {
                 padding={2}
               >
                 {/* User Cart Heading */}
-                <Heading align='center' size='md'>
+                <Heading align='center' size='sm'>
                   Your Cart
                 </Heading>
                 <Text color='gray' italic>
@@ -143,6 +176,21 @@ export default class shoes extends Component {
                 </Text>
 
                 {/* Cart Items */}
+                {cartItems.map(item => (
+                  <Box key={item._id} display='flex' alignItems='center'>
+                    <Text>
+                      {item.name} x {item.quantity} -{' '}
+                      {(item.quantity * item.price).toFixed(2)}
+                    </Text>
+                    <IconButton
+                      accessibilityLabel='Delete Item'
+                      icon='cancel'
+                      size='sm'
+                      iconColor='red'
+                      onClick={() => this.deleteItemFromCart(item._id)}
+                    />
+                  </Box>
+                ))}
 
                 <Box
                   display='flex'
@@ -155,7 +203,7 @@ export default class shoes extends Component {
                       <Text color='red'>Please selected some items</Text>
                     )}
                   </Box>
-                  <Text size='lg'>Total: $4.99</Text>
+                  <Text size='lg'>Total: {calculatePrice(cartItems)}</Text>
                   <Text>
                     <Link to='/checkout'>Checkout</Link>
                   </Text>
