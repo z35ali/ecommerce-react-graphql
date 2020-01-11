@@ -13,7 +13,7 @@ import {
 } from 'gestalt';
 import Loader from './Loader';
 import { Link } from 'react-router-dom';
-import { calculatePrice } from '../utils/index';
+import { calculatePrice, setCart, getCart } from '../utils/index';
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiUrl);
@@ -50,7 +50,11 @@ export default class shoes extends Component {
          }`
         }
       });
-      this.setState({ shoes: data.brand.shoes, brand: data.brand.name });
+      this.setState({
+        shoes: data.brand.shoes,
+        brand: data.brand.name,
+        cartItems: getCart()
+      });
     } catch (err) {
       console.error(err);
     }
@@ -67,11 +71,11 @@ export default class shoes extends Component {
         ...shoe,
         quantity: 1
       });
-      this.setState({ cartItems: updatedItems });
+      this.setState({ cartItems: updatedItems }, () => setCart(updatedItems));
     } else {
       const updatedItems = [...this.state.cartItems];
       updatedItems[alreadyInCart].quantity += 1;
-      this.setState({ cartItems: updatedItems });
+      this.setState({ cartItems: updatedItems }, () => setCart(updatedItems));
     }
   };
 
@@ -79,7 +83,7 @@ export default class shoes extends Component {
     const filteredItems = this.state.cartItems.filter(
       item => item._id !== itemToDeleteId
     );
-    this.setState({ cartItems: filteredItems });
+    this.setState({ cartItems: filteredItems }, setCart(filteredItems));
   };
 
   render() {
