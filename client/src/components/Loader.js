@@ -15,7 +15,7 @@ export default function Loader({ show }) {
           }
         }}
       >
-        <GridLoader color='#d6c8ec' size={25} margin='3px' />
+        <GridLoader color='#9c660c' size={25} margin='3px' />
       </Box>
     )
   );
