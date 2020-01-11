@@ -1,8 +1,8 @@
 {
   "connection": "default",
-  "collectionName": "brands",
+  "collectionName": "brews",
   "info": {
-    "name": "Brand"
+    "name": "Brew"
   },
   "options": {
     "increments": true,
@@ -10,8 +10,7 @@
   },
   "attributes": {
     "name": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "description": {
       "type": "text"
@@ -22,9 +21,12 @@
       "plugin": "upload",
       "required": false
     },
-    "brews": {
-      "collection": "brew",
-      "via": "brand"
+    "price": {
+      "type": "decimal"
+    },
+    "brand": {
+      "via": "brews",
+      "model": "brand"
     }
   }
 }
