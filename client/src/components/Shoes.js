@@ -68,13 +68,13 @@ export default class shoes extends Component {
             }
           }}
         >
-          {/* shoes Section */}
+          {/* Shoes Section */}
           <Box display='flex' direction='column' alignItems='center'>
-            {/* shoes Heading */}
+            {/* Shoes Heading */}
             <Box margin={2}>
               <Heading color='orchid'>{brand}</Heading>
             </Box>
-            {/* shoes */}
+            {/* Shoes */}
             <Box
               dangerouslySetInlineStyle={{
                 __style: {
@@ -93,8 +93,7 @@ export default class shoes extends Component {
                     image={
                       <Box height={250} width={200}>
                         <Image
-                          fit='cover'
-                          alt='Brand'
+                          fit='contain'
                           naturalHeight={1}
                           naturalWidth={1}
                           src={`${apiUrl}${shoe.image.url}`}
@@ -112,8 +111,10 @@ export default class shoes extends Component {
                         <Text size='xl'>{shoe.name}</Text>
                       </Box>
                       <Text size='xl'>{shoe.description}</Text>
-                      <Text color='orchid'>${shoe.price}</Text>
                       <Box marginTop={2}>
+                        <Text color='orchid'>${shoe.price}</Text>
+                      </Box>
+                      <Box marginTop={4}>
                         <Text size='xl'>
                           <Button color='blue' text='Add to Cart' />
                         </Text>

@@ -69,7 +69,7 @@ class App extends Component {
     return (
       <Container>
         {/* Brand Search Field */}
-        <Box display='flex' justifyContent='center' marginTop={4}>
+        <Box display='flex' justifyContent='center' marginTop={8}>
           <SearchField
             id='searchField'
             accessibilityLabel='Brands Search Field'
@@ -88,7 +88,12 @@ class App extends Component {
         </Box>
 
         {/* Brands Section */}
-        <Box display='flex' justifyContent='center' marginBottom={2}>
+        <Box
+          display='flex'
+          justifyContent='center'
+          marginBottom={2}
+          marginTop={4}
+        >
           {/* Brands Header */}
           <Heading color='midnight' size='md'>
             Shoe Brands
@@ -127,11 +132,17 @@ class App extends Component {
                   justifyContent='center'
                   direction='column'
                 >
-                  <Text size='xl'>{brand.name}</Text>
-                  <Text size='xl'>{brand.description}</Text>
-                  <Text size='xl'>
-                    <Link to={`/${brand._id}`}>See shoes</Link>
+                  <Text size='xl' bold>
+                    {brand.name}
                   </Text>
+                  <Box marginTop={2}>
+                    <Text size='xl'>{brand.description}</Text>
+                  </Box>
+                  <Box marginTop={2}>
+                    <Text size='xl'>
+                      <Link to={`/${brand._id}`}>See Shoes</Link>
+                    </Text>
+                  </Box>
                 </Box>
               </Card>
             </Box>
