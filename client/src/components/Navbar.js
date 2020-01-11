@@ -16,7 +16,7 @@ export default class Navbar extends Component {
       >
         {/* Sign in link */}
         <NavLink activeClassName='active' to='/signin'>
-          <Text size='x1' color='white'>
+          <Text size='xl' color='white'>
             Sign In
           </Text>
         </NavLink>
@@ -40,7 +40,7 @@ export default class Navbar extends Component {
 
         {/* Sign up link */}
         <NavLink activeClassName='active' to='/signup'>
-          <Text size='x1' color='white'>
+          <Text size='xl' color='white'>
             Sign Up
           </Text>
         </NavLink>
