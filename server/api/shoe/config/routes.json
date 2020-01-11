@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/brews",
-      "handler": "brew.find",
+      "path": "/shoes",
+      "handler": "shoe.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/brews/count",
-      "handler": "brew.count",
+      "path": "/shoes/count",
+      "handler": "shoe.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/brews/:id",
-      "handler": "brew.findOne",
+      "path": "/shoes/:id",
+      "handler": "shoe.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/brews",
-      "handler": "brew.create",
+      "path": "/shoes",
+      "handler": "shoe.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/brews/:id",
-      "handler": "brew.update",
+      "path": "/shoes/:id",
+      "handler": "shoe.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/brews/:id",
-      "handler": "brew.delete",
+      "path": "/shoes/:id",
+      "handler": "shoe.delete",
       "config": {
         "policies": []
       }

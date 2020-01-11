@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `brew` model.
+ * Lifecycle callbacks for the `shoe` model.
  */
 
 module.exports = {

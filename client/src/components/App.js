@@ -91,7 +91,7 @@ class App extends Component {
         <Box display='flex' justifyContent='center' marginBottom={2}>
           {/* Brands Header */}
           <Heading color='midnight' size='md'>
-            Brew Brands
+            Shoe Brands
           </Heading>
         </Box>
         {/* Brands */}
@@ -130,7 +130,7 @@ class App extends Component {
                   <Text size='xl'>{brand.name}</Text>
                   <Text size='xl'>{brand.description}</Text>
                   <Text size='xl'>
-                    <Link to={`/${brand._id}`}>See Brews</Link>
+                    <Link to={`/${brand._id}`}>See shoes</Link>
                   </Text>
                 </Box>
               </Card>

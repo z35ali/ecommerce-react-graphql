@@ -14,13 +14,13 @@ import Loader from './Loader';
 import { Link } from 'react-router-dom';
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiUrl);
-export default class Brews extends Component {
+export default class shoes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      brews: [],
+      shoes: [],
       brand: '',
-      loadingBrews: true,
+      loadingshoes: true,
       cartItems: []
     };
   }
@@ -32,7 +32,7 @@ export default class Brews extends Component {
             brand(id: "${this.props.match.params.brandId}"){
              _id
              name
-             brews{
+             shoes{
                _id
                name
                description
@@ -46,15 +46,15 @@ export default class Brews extends Component {
          }`
         }
       });
-      this.setState({ brews: data.brand.brews, brand: data.brand.name });
+      this.setState({ shoes: data.brand.shoes, brand: data.brand.name });
     } catch (err) {
       console.error(err);
     }
-    this.setState({ loadingBrews: false });
+    this.setState({ loadingshoes: false });
   }
 
   render() {
-    const { brand, brews, loadingBrews, cartItems } = this.state;
+    const { brand, shoes, loadingshoes, cartItems } = this.state;
     return (
       <Container>
         <Box
@@ -68,13 +68,13 @@ export default class Brews extends Component {
             }
           }}
         >
-          {/* Brews Section */}
+          {/* shoes Section */}
           <Box display='flex' direction='column' alignItems='center'>
-            {/* Brews Heading */}
+            {/* shoes Heading */}
             <Box margin={2}>
               <Heading color='orchid'>{brand}</Heading>
             </Box>
-            {/* Brews */}
+            {/* shoes */}
             <Box
               dangerouslySetInlineStyle={{
                 __style: {
@@ -87,8 +87,8 @@ export default class Brews extends Component {
               justifyContent='center'
               padding={4}
             >
-              {brews.map(brew => (
-                <Box paddingY={4} margin={2} width={210} key={brew._id}>
+              {shoes.map(shoe => (
+                <Box paddingY={4} margin={2} width={210} key={shoe._id}>
                   <Card
                     image={
                       <Box height={250} width={200}>
@@ -97,7 +97,7 @@ export default class Brews extends Component {
                           alt='Brand'
                           naturalHeight={1}
                           naturalWidth={1}
-                          src={`${apiUrl}${brew.image.url}`}
+                          src={`${apiUrl}${shoe.image.url}`}
                         />
                       </Box>
                     }
@@ -109,10 +109,10 @@ export default class Brews extends Component {
                       direction='column'
                     >
                       <Box marginBottom={2}>
-                        <Text size='xl'>{brew.name}</Text>
+                        <Text size='xl'>{shoe.name}</Text>
                       </Box>
-                      <Text size='xl'>{brew.description}</Text>
-                      <Text color='orchid'>${brew.price}</Text>
+                      <Text size='xl'>{shoe.description}</Text>
+                      <Text color='orchid'>${shoe.price}</Text>
                       <Box marginTop={2}>
                         <Text size='xl'>
                           <Button color='blue' text='Add to Cart' />
@@ -163,7 +163,7 @@ export default class Brews extends Component {
             </Mask>
           </Box>
         </Box>
-        <Loader show={loadingBrews} />
+        <Loader show={loadingshoes} />
       </Container>
     );
   }

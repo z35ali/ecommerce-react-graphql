@@ -26,14 +26,14 @@ export default class Navbar extends Component {
           <Box display='flex' alignItems='center'>
             <Box height={50} width={50} margin={2}>
               <Image
-                src='./icons/logo.svg'
+                src='./icons/logo.jpg'
                 alt='Logo'
                 naturalHeight={1}
                 naturalWidth={1}
               />
             </Box>
             <Heading size='xs' color='orange'>
-              {'E-Drinks'}
+              {'Shoe Shop'}
             </Heading>
           </Box>
         </NavLink>

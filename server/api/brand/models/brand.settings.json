@@ -22,9 +22,9 @@
       "plugin": "upload",
       "required": false
     },
-    "brews": {
-      "collection": "brew",
-      "via": "brand"
+    "shoes": {
+      "via": "brand",
+      "collection": "shoe"
     }
   }
 }

@@ -1,8 +1,6 @@
 {
-  "connection": "default",
-  "collectionName": "brews",
   "info": {
-    "name": "Brew"
+    "name": "Shoe"
   },
   "options": {
     "increments": true,
@@ -15,18 +13,20 @@
     "description": {
       "type": "text"
     },
+    "price": {
+      "type": "decimal"
+    },
     "image": {
       "model": "file",
       "via": "related",
       "plugin": "upload",
       "required": false
     },
-    "price": {
-      "type": "decimal"
-    },
     "brand": {
-      "via": "brews",
-      "model": "brand"
+      "model": "brand",
+      "via": "shoes"
     }
-  }
+  },
+  "connection": "default",
+  "collectionName": "shoes"
 }
