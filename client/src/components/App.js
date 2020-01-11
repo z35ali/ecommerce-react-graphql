@@ -12,6 +12,7 @@ import {
 } from 'gestalt';
 import Strapi from 'strapi-sdk-javascript/build/main';
 import { Link } from 'react-router-dom';
+import Loader from './Loader';
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiUrl);
 
@@ -20,7 +21,8 @@ class App extends Component {
     super(props);
     this.state = {
       brands: [],
-      searchTerm: ''
+      searchTerm: '',
+      loadingBrands: true
     };
   }
   async componentDidMount() {
@@ -46,6 +48,7 @@ class App extends Component {
     } catch (err) {
       console.error(err);
     }
+    this.setState({ loadingBrands: false });
   }
 
   handleChange = ({ value }) => {
@@ -62,7 +65,7 @@ class App extends Component {
     });
   };
   render() {
-    const { searchTerm } = this.state;
+    const { searchTerm, loadingBrands } = this.state;
     return (
       <Container>
         {/* Brand Search Field */}
@@ -134,6 +137,7 @@ class App extends Component {
             </Box>
           ))}
         </Box>
+        <Loader show={loadingBrands} />
       </Container>
     );
   }
