@@ -18,8 +18,8 @@
       "required": true
     },
     "shoes": {
-      "collection": "shoe",
-      "via": "brand"
+      "via": "brand",
+      "collection": "shoe"
     },
     "imageUrl": {
       "type": "string",

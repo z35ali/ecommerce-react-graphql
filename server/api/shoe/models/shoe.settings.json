@@ -21,15 +21,12 @@
       "type": "decimal",
       "required": true
     },
-    "image": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload",
-      "required": true
-    },
     "brand": {
-      "via": "shoes",
-      "model": "brand"
+      "model": "brand",
+      "via": "shoes"
+    },
+    "imageUrl": {
+      "type": "string"
     }
   }
 }
