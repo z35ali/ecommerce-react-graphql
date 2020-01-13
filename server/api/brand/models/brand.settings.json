@@ -17,15 +17,13 @@
       "type": "text",
       "required": true
     },
-    "image": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload",
-      "required": false
-    },
     "shoes": {
-      "via": "brand",
-      "collection": "shoe"
+      "collection": "shoe",
+      "via": "brand"
+    },
+    "imageUrl": {
+      "type": "string",
+      "required": true
     }
   }
 }

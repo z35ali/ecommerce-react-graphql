@@ -35,9 +35,7 @@ class App extends Component {
       _id, 
         name,
         description,
-        image {
-          url
-        }
+        imageUrl
       }
     }`
         }

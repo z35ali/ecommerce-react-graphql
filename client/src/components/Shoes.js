@@ -40,9 +40,7 @@ export default class shoes extends Component {
                _id
                name
                description
-               image{
-                 url
-               }
+              imageUrl
                price
                
              }
