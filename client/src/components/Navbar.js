@@ -10,15 +10,13 @@ export default class Navbar extends Component {
         alignItems='center'
         justifyContent='around'
         height={70}
-        color='midnight'
+        color='white'
         padding={1}
         shape='roundedBottom'
       >
         {/* Sign in link */}
         <NavLink activeClassName='active' to='/signin'>
-          <Text size='xl' color='white'>
-            Sign In
-          </Text>
+          <Text size='xl'>Sign In</Text>
         </NavLink>
 
         {/* Title and Logo */}
@@ -40,9 +38,7 @@ export default class Navbar extends Component {
 
         {/* Sign up link */}
         <NavLink activeClassName='active' to='/signup'>
-          <Text size='xl' color='white'>
-            Sign Up
-          </Text>
+          <Text size='xl'>Sign Up</Text>
         </NavLink>
       </Box>
     );

@@ -13,7 +13,7 @@ import {
 import Strapi from 'strapi-sdk-javascript/build/main';
 import { Link } from 'react-router-dom';
 import Loader from './Loader';
-const apiUrl = process.env.API_URL || 'http://localhost:1337';
+const apiUrl = process.env.REACT_APP_API_URL;
 const strapi = new Strapi(apiUrl);
 
 class App extends Component {
@@ -35,9 +35,7 @@ class App extends Component {
       _id, 
         name,
         description,
-        image {
-          url
-        }
+        imageUrl
       }
     }`
         }
@@ -95,7 +93,7 @@ class App extends Component {
           marginTop={4}
         >
           {/* Brands Header */}
-          <Heading color='midnight' size='md'>
+          <Heading color='darkGray' size='md'>
             Shoe Brands
           </Heading>
         </Box>
@@ -103,13 +101,14 @@ class App extends Component {
         <Box
           dangerouslySetInlineStyle={{
             __style: {
-              backgroundColor: '#d6c8ec'
+              backgroundColor: '#DCDCDC'
             }
           }}
           shape='rounded'
           wrap
           display='flex'
           justifyContent='around'
+          marginTop={5}
         >
           {this.filteredBrands(this.state).map(brand => (
             <Box paddingY={4} margin={2} width={200} key={brand._id}>

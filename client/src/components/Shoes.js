@@ -15,7 +15,7 @@ import Loader from './Loader';
 import { Link } from 'react-router-dom';
 import { calculatePrice, setCart, getCart } from '../utils/index';
 
-const apiUrl = process.env.API_URL || 'http://localhost:1337';
+const apiUrl = process.env.REACT_APP_API_URL;
 const strapi = new Strapi(apiUrl);
 
 export default class shoes extends Component {
@@ -40,9 +40,7 @@ export default class shoes extends Component {
                _id
                name
                description
-               image{
-                 url
-               }
+              imageUrl
                price
                
              }
