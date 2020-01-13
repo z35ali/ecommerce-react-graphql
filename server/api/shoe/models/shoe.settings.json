@@ -1,4 +1,6 @@
 {
+  "connection": "default",
+  "collectionName": "shoes",
   "info": {
     "name": "Shoe"
   },
@@ -8,25 +10,26 @@
   },
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "price": {
-      "type": "decimal"
+      "type": "decimal",
+      "required": true
     },
     "image": {
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": false
+      "required": true
     },
     "brand": {
       "model": "brand",
       "via": "shoes"
     }
-  },
-  "connection": "default",
-  "collectionName": "shoes"
+  }
 }
