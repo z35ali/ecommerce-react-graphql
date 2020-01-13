@@ -35,7 +35,7 @@ class App extends Component {
       _id, 
         name,
         description,
-        imageUrl
+       imageUrl
       }
     }`
         }
@@ -120,7 +120,7 @@ class App extends Component {
                       alt='Brand'
                       naturalHeight={1}
                       naturalWidth={1}
-                      src={`${apiUrl}${brand.image.url}`}
+                      src={`${brand.imageUrl}`}
                     />
                   </Box>
                 }
