@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
@@ -40,7 +40,7 @@ const Root = () => (
         <Route component={Signin} path='/signin' />
         <Route component={Signup} path='/signup' />
         <PrivateRoute component={Checkout} path='/checkout' />
-        <Route component={Shoes} path='/:brandId' />
+        <Route component={Shoes} path='/:brandName' />
       </Switch>
     </React.Fragment>
   </Router>

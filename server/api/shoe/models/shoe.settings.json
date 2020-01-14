@@ -22,8 +22,8 @@
       "required": true
     },
     "brand": {
-      "model": "brand",
-      "via": "shoes"
+      "via": "shoes",
+      "model": "brand"
     },
     "imageUrl": {
       "type": "string",
