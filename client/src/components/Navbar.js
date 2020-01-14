@@ -31,7 +31,7 @@ export default class Navbar extends Component {
               />
             </Box>
             <Heading size='xs' color='orange'>
-              {'Shoe Shop'}
+              {'Shoes Shop'}
             </Heading>
           </Box>
         </NavLink>
