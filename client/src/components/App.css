@@ -13,3 +13,7 @@ a:visited {
 .active {
   font-style: italic;
 }
+
+._65:hover ._u4 {
+  transform: scale(1.05);
+}
