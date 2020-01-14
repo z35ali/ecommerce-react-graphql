@@ -11,7 +11,7 @@ export default function Loader({ show }) {
           __style: {
             bottom: 300,
             left: '50%',
-            transform: 'translateX(-50%'
+            transform: 'translateX(-50%)'
           }
         }}
       >
