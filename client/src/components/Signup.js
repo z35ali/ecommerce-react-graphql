@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt';
+import ToastMessage from './ToastMessage';
+import Strapi from 'strapi-sdk-javascript/build/main';
+import { setToken } from '../utils/index';
+const apiUrl = process.env.REACT_APP_API_URL;
+const strapi = new Strapi(apiUrl);
 
 export default class Signup extends Component {
   constructor(props) {
@@ -7,13 +12,60 @@ export default class Signup extends Component {
     this.state = {
       username: '',
       email: '',
-      password: ''
+      password: '',
+      toast: false,
+      toastMessage: '',
+      loading: false
     };
   }
   handleChange = ({ event, value }) => {
     this.setState({ [event.target.name]: value });
   };
+
+  handleSubmit = async event => {
+    event.preventDefault();
+    const { username, email, password } = this.state;
+    if (!this.isFormEmpty(this.state)) {
+      // Proceed with sign up
+      try {
+        this.setState({ loading: true });
+        const response = await strapi.register(username, email, password);
+        this.setState({ loading: false });
+        setToken(response.jwt);
+        this.redirectUser('/');
+        // redirect to home page
+      } catch (err) {
+        this.setState({ loading: false });
+        this.showToast(err.message);
+      }
+    } else {
+      this.showToast('Please fill in all fields.');
+    }
+  };
+
+  redirectUser = path => this.props.history.push(path);
+
+  isFormEmpty = ({ username, email, password }) => {
+    return !username || !email || !password;
+  };
+
+  showToast = toastMessage => {
+    this.setState({
+      toast: true,
+      toastMessage
+    });
+    setTimeout(
+      () =>
+        this.setState({
+          toast: false,
+          toastMessage: ''
+        }),
+      2000
+    );
+  };
+
   render() {
+    const { toastMessage, toast, loading } = this.state;
     return (
       <Container>
         <Box
@@ -31,6 +83,7 @@ export default class Signup extends Component {
         >
           {/* Sign Up Form  */}
           <form
+            onSubmit={this.handleSubmit}
             style={{
               display: 'inlineBlock',
               textAlign: 'center',
@@ -68,16 +121,23 @@ export default class Signup extends Component {
             {/* Password Input */}
             <TextField
               id='password'
-              type='text'
+              type='password'
               name='password'
               placeholder='Password'
               onChange={this.handleChange}
             />
             <Box marginTop={2}>
-              <Button inline color='blue' text='Submit' type='submit' />
+              <Button
+                inline
+                disabled={loading}
+                color='blue'
+                text='Submit'
+                type='submit'
+              />
             </Box>
           </form>
         </Box>
+        <ToastMessage message={toastMessage} show={toast} />
       </Container>
     );
   }
