@@ -26,7 +26,8 @@
       "via": "shoes"
     },
     "imageUrl": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }
