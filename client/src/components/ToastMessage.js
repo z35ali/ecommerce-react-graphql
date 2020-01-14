@@ -6,7 +6,7 @@ const ToastMessage = ({ show, message }) =>
     <Box
       dangerouslySetInlineStyle={{
         __style: {
-          bottom: 250,
+          bottom: 130,
           left: '50%',
           transform: 'translateX(-50%)'
         }
