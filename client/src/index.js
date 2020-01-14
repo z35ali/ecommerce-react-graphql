@@ -40,7 +40,7 @@ const Root = () => (
         <Route component={Signin} path='/signin' />
         <Route component={Signup} path='/signup' />
         <PrivateRoute component={Checkout} path='/checkout' />
-        <Route component={Shoes} path='/:brandName' />
+        <Route component={Shoes} path='/:brandId' />
       </Switch>
     </React.Fragment>
   </Router>

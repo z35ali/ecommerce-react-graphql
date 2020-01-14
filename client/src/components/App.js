@@ -139,7 +139,7 @@ class App extends Component {
                   </Box>
                   <Box marginTop={2}>
                     <Text size='xl'>
-                      <Link to={`/${brand.name}`}>See Shoes</Link>
+                      <Link to={`/${brand._id}`}>See Shoes</Link>
                     </Text>
                   </Box>
                 </Box>
