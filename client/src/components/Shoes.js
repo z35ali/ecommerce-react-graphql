@@ -127,7 +127,7 @@ export default class shoes extends Component {
                           fit='contain'
                           naturalHeight={1}
                           naturalWidth={1}
-                          src={`${apiUrl}${shoe.image.url}`}
+                          src={`${shoe.imageUrl}`}
                         />
                       </Box>
                     }
