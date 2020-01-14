@@ -13,6 +13,18 @@ export default class Signup extends Component {
   handleChange = ({ event, value }) => {
     this.setState({ [event.target.name]: value });
   };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    if (!this.isFormEmpty(this.state)) {
+      console.log('submitted');
+    }
+  };
+
+  isFormEmpty = ({ username, email, password }) => {
+    return !username || !email || !password;
+  };
+
   render() {
     return (
       <Container>
@@ -31,6 +43,7 @@ export default class Signup extends Component {
         >
           {/* Sign Up Form  */}
           <form
+            onSubmit={this.handleSubmit}
             style={{
               display: 'inlineBlock',
               textAlign: 'center',
