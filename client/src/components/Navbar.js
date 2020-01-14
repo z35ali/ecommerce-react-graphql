@@ -70,9 +70,9 @@ const UnAuthNav = () => (
     padding={1}
     shape='roundedBottom'
   >
-    {/* Sign in link */}
-    <NavLink activeClassName='active' to='/signin'>
-      <Text size='xl'>Sign In</Text>
+    {/* Sign up link */}
+    <NavLink activeClassName='active' to='/signup'>
+      <Text size='xl'>Sign Up</Text>
     </NavLink>
 
     {/* Title and Logo */}
@@ -91,10 +91,9 @@ const UnAuthNav = () => (
         </Heading>
       </Box>
     </NavLink>
-
-    {/* Sign up link */}
-    <NavLink activeClassName='active' to='/signup'>
-      <Text size='xl'>Sign Up</Text>
+    {/* Sign in link */}
+    <NavLink activeClassName='active' to='/signin'>
+      <Text size='xl'>Sign In</Text>
     </NavLink>
   </Box>
 );
