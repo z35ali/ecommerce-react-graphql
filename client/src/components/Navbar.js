@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Box, Text, Heading, Image, Button } from 'gestalt';
 import { NavLink, withRouter } from 'react-router-dom';
 import { getToken, clearCart, clearToken } from '../utils/index';
-class Navbar extends React.Component {
+class Navbar extends Component {
   handleSignOut = () => {
     clearToken();
     clearCart();
