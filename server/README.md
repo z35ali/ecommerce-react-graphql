@@ -1,3 +1,3 @@
 # Strapi application
 
-A quick description of your strapi application
+The three content-types in Strapi are brands, shoes, and users.
