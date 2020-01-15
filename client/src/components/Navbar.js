@@ -43,9 +43,11 @@ const AuthNav = ({ handleSignOut }) => (
             naturalWidth={1}
           />
         </Box>
-        <Heading size='xs' color='orange'>
-          {'Shoes Shop'}
-        </Heading>
+        <div className='nav-title'>
+          <Heading size='xs' color='orange'>
+            {'Shoes Shop'}
+          </Heading>
+        </div>
       </Box>
     </NavLink>
 
@@ -80,9 +82,11 @@ const UnAuthNav = () => (
             naturalWidth={1}
           />
         </Box>
-        <Heading size='xs' color='orange'>
-          {'Shoes Shop'}
-        </Heading>
+        <div className='nav-title'>
+          <Heading size='xs' color='orange'>
+            {'Shoes Shop'}
+          </Heading>
+        </div>
       </Box>
     </NavLink>
     {/* Sign in link */}
