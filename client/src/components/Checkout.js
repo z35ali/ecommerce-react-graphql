@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Container,
-  Box,
-  Heading,
-  Text,
-  TextField,
-  Modal,
-  Spinner,
-  Button
-} from 'gestalt';
+import { Container, Box, Heading, Text, TextField } from 'gestalt';
 import ToastMessage from './ToastMessage';
 import { getCart, calculatePrice } from '../utils/index';
 export default class Checkout extends Component {
@@ -19,9 +10,7 @@ export default class Checkout extends Component {
     city: '',
     confirmationEmailAddress: '',
     toast: false,
-    toastMessage: '',
-    orderProcessing: false,
-    modal: false
+    toastMessage: ''
   };
 
   componentDidMount() {
@@ -35,16 +24,9 @@ export default class Checkout extends Component {
     event.preventDefault();
 
     if (!this.isFormEmpty(this.state)) {
-      this.setState({ modal: true });
     } else {
       this.showToast('Please fill in all fields.');
     }
-  };
-
-  handleSubmitOrder = () => {};
-
-  closeModal = () => {
-    this.setState({ modal: false });
   };
   isFormEmpty = ({ address, postalCode, city, confirmationEmailAddress }) => {
     return !address || !postalCode || !city || !confirmationEmailAddress;
@@ -65,13 +47,7 @@ export default class Checkout extends Component {
     );
   };
   render() {
-    const {
-      toast,
-      toastMessage,
-      cartItems,
-      modal,
-      orderProcessing
-    } = this.state;
+    const { toast, toastMessage, cartItems } = this.state;
     return (
       <Container>
         <Box
@@ -175,95 +151,8 @@ export default class Checkout extends Component {
             </Box>
           )}
         </Box>
-        {/* Confirmation Modal */}
-        {modal && (
-          <ConfirmationModal
-            orderProcessing={orderProcessing}
-            cartItems={cartItems}
-            closeModal={this.closeModal}
-            handleSubmitOrder={this.handleSubmitOrder}
-          />
-        )}
-
         <ToastMessage message={toastMessage} show={toast} />
       </Container>
     );
   }
 }
-
-const ConfirmationModal = ({
-  orderProcessing,
-  cartItems,
-  closeModal,
-  handleSubmitOrder
-}) => (
-  <Modal
-    accessibilityCloseLabel='close'
-    accessibilityModalLabel='Confirm Your Order'
-    heading='Confirm Your Order'
-    onDismiss={closeModal}
-    footer={
-      <Box
-        display='flex'
-        marginRight={-1}
-        marginLeft={-1}
-        justifyContent='center'
-      >
-        <Box padding={1}>
-          <Button
-            size='lg'
-            color='red'
-            text='Submit'
-            disabled={orderProcessing}
-            onClick={handleSubmitOrder}
-          />
-        </Box>
-        <Box padding={1}>
-          <Button
-            size='lg'
-            text='Cancel'
-            disabled={orderProcessing}
-            onClick={closeModal}
-          />
-        </Box>
-      </Box>
-    }
-    role='alertdialog'
-    size='sm'
-  >
-    {/* Order Summary */}
-    <Box
-      display='flex'
-      justifyContent='center'
-      alignItems='center'
-      direction='column'
-      padding={2}
-      color='lightWash'
-    >
-      {cartItems.map(item => (
-        <Box key={item._id} padding={1}>
-          <Text size='lg' color='red'>
-            {item.name} x {item.quantity} - ${item.quantity * item.price}
-          </Text>
-        </Box>
-      ))}
-      <Box paddingY={2}>
-        <Text size='lg' bold>
-          Total: {calculatePrice(cartItems)}
-        </Text>
-      </Box>
-    </Box>
-    {/* Order Processing Spinner */}
-    <Box marginTop={2}>
-      <Spinner
-        show={orderProcessing}
-        accessibilityLabel='Order Processing Spinner'
-      />
-    </Box>
-    {orderProcessing && (
-      <Text align='center' italic>
-        Submitting Order...
-      </Text>
-    )}
-  </Modal>
-);
