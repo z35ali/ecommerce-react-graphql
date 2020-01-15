@@ -36,7 +36,7 @@ export default class Signup extends Component {
         // redirect to home page
       } catch (err) {
         this.setState({ loading: false });
-        this.showToast(err.message);
+        this.showToast('Sign up error.');
       }
     } else {
       this.showToast('Please fill in all fields.');
