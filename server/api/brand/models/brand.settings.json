@@ -11,15 +11,16 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "description": {
       "type": "text",
       "required": true
     },
     "shoes": {
-      "via": "brand",
-      "collection": "shoe"
+      "collection": "shoe",
+      "via": "brand"
     },
     "imageUrl": {
       "type": "string",
