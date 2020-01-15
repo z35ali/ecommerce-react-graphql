@@ -1,77 +1,8 @@
-"use strict";
+'use strict';
 
 /**
- * shoe.js controller
- *
- * @description: A set of functions called "actions" for managing `shoe`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/concepts/controllers.html#core-controllers)
+ * to customize this controller
  */
 
-module.exports = {
-  /**
-   * Retrieve shoe records.
-   *
-   * @return {Object|Array}
-   */
-
-  find: async (ctx, next, { populate } = {}) => {
-    if (ctx.query._q) {
-      return strapi.services.shoe.search(ctx.query);
-    } else {
-      return strapi.services.shoe.fetchAll(ctx.query, populate);
-    }
-  },
-
-  /**
-   * Retrieve a shoe record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async ctx => {
-    if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
-      return ctx.notFound();
-    }
-
-    return strapi.services.shoe.fetch(ctx.params);
-  },
-
-  /**
-   * Count shoe records.
-   *
-   * @return {Number}
-   */
-
-  count: async ctx => {
-    return strapi.services.shoe.count(ctx.query);
-  },
-
-  /**
-   * Create a/an shoe record.
-   *
-   * @return {Object}
-   */
-
-  create: async ctx => {
-    return strapi.services.shoe.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an shoe record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.shoe.edit(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy a/an shoe record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.shoe.remove(ctx.params);
-  }
-};
+module.exports = {};

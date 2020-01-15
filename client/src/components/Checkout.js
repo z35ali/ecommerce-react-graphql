@@ -9,15 +9,9 @@ import {
   Spinner,
   Button
 } from 'gestalt';
-import {
-  Elements,
-  StripeProvider,
-  CardElement,
-  injectStripe
-} from 'react-stripe-elements';
 import ToastMessage from './ToastMessage';
 import { getCart, calculatePrice } from '../utils/index';
-class _CheckoutForm extends Component {
+export default class Checkout extends Component {
   state = {
     cartItems: [],
     address: '',
@@ -165,13 +159,6 @@ class _CheckoutForm extends Component {
                   placeholder='Confirmaton Email Address'
                   onChange={this.handleChange}
                 />
-
-                {/* Credit Card Element */}
-                <CardElement
-                  id='stripe__input'
-                  onReady={input => input.focus()}
-                />
-
                 <Box marginTop={2}>
                   <button id='stripe__button' type='submit'>
                     Submit
@@ -280,14 +267,3 @@ const ConfirmationModal = ({
     )}
   </Modal>
 );
-
-const CheckoutForm = injectStripe(_CheckoutForm);
-
-const Checkout = () => (
-  <StripeProvider apiKey='pk_test_IdVy5L6VqzrqcSEighgdPMEU00ge0dubYl'>
-    <Elements>
-      <CheckoutForm />
-    </Elements>
-  </StripeProvider>
-);
-export default Checkout;
