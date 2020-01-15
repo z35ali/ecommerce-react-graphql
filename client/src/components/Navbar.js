@@ -52,7 +52,7 @@ const AuthNav = ({ handleSignOut }) => (
     {/* Sign out Button */}
     <Button
       onClick={handleSignOut}
-      color='black'
+      color='gray'
       text='Sign Out'
       inline
       size='md'
