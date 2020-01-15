@@ -127,7 +127,8 @@ export default class shoes extends Component {
                           fit='contain'
                           naturalHeight={1}
                           naturalWidth={1}
-                          src={`${shoe.imageUrl}`}
+                          src={shoe.imageUrl}
+                          alt={shoe.name}
                         />
                       </Box>
                     }
