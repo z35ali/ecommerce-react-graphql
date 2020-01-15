@@ -50,13 +50,7 @@ const AuthNav = ({ handleSignOut }) => (
     </NavLink>
 
     {/* Sign out Button */}
-    <Button
-      onClick={handleSignOut}
-      color='black'
-      text='Sign Out'
-      inline
-      size='md'
-    />
+    <Button onClick={handleSignOut} text='Sign Out' inline size='md' />
   </Box>
 );
 
