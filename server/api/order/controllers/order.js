@@ -64,7 +64,7 @@ module.exports = {
     // This require() should usually be on top of each file,
     // but strapi's loading queue does not load config object by the time
     // this file is loaded
-    const stripe = require("stripe")(process.env.STRAPI_SECRET_KEY);
+    const stripe = require("stripe")(strapi.config.stripePrivateKey);
 
     // Send charge to Stripe
     const charge = await stripe.charges.create({
