@@ -160,7 +160,7 @@ export default class Checkout extends Component {
                   onChange={this.handleChange}
                 />
                 <Box marginTop={2}>
-                  <button id='stripe__button' type='submit'>
+                  <button id='checkoutButton' type='submit'>
                     Submit
                   </button>
                 </Box>
